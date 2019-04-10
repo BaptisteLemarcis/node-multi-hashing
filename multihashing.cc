@@ -94,9 +94,11 @@ NAN_METHOD(scrypt) {
    if(!Buffer::HasInstance(target))
        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
     
-   Local<Number> numn = info[1]->ToNumber();
+   //Local<Number> numn = info[1]->ToNumber();
+   MaybeLocal<Number> numn = Nan::To<Number>(info[1]);
    unsigned int nValue = numn->Value();
-   Local<Number> numr = info[2]->ToNumber();
+   //Local<Number> numr = info[2]->ToNumber();
+   MaybeLocal<Number> numr = Nan::To<Number>(info[2]);
    unsigned int rValue = numr->Value();
    
    char * input = Buffer::Data(target);
@@ -124,7 +126,8 @@ NAN_METHOD(scryptn) {
    if(!Buffer::HasInstance(target))
        return THROW_ERROR_EXCEPTION("Argument should be a buffer object.");
 
-   Local<Number> num = info[1]->ToNumber();
+   //Local<Number> num = info[1]->ToNumber();
+   MaybeLocal<Number> num = Nan::To<Number>(info[1]);
    unsigned int nFactor = num->Value();
 
    char * input = Buffer::Data(target);
@@ -154,16 +157,20 @@ NAN_METHOD(scryptjane) {
     if(!Buffer::HasInstance(target))
         return THROW_ERROR_EXCEPTION("First should be a buffer object.");
 
-    Local<Number> num = info[1]->ToNumber();
+    //Local<Number> num = info[1]->ToNumber();
+    MaybeLocal<Number> num = Nan::To<Number>(info[1]);
     int timestamp = num->Value();
 
-    Local<Number> num2 = info[2]->ToNumber();
+    //Local<Number> num2 = info[2]->ToNumber();
+    MaybeLocal<Number> num2 = Nan::To<Number>(info[2]);
     int nChainStartTime = num2->Value();
 
-    Local<Number> num3 = info[3]->ToNumber();
+    //Local<Number> num3 = info[3]->ToNumber();
+    MaybeLocal<Number> num3 = Nan::To<Number>(info[3]);
     int nMin = num3->Value();
 
-    Local<Number> num4 = info[4]->ToNumber();
+    //Local<Number> num4 = info[4]->ToNumber();
+    MaybeLocal<Number> num4 = Nan::To<Number>(info[4]);
     int nMax = num4->Value();
 
     char * input = Buffer::Data(target);
