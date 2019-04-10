@@ -96,10 +96,10 @@ NAN_METHOD(scrypt) {
     
    //Local<Number> numn = info[1]->ToNumber();
    Nan::MaybeLocal<Number> numn = Nan::To<Number>(info[1]);
-   unsigned int nValue = numn->Value();
+   unsigned int nValue = numn.ToLocalChecked()->Value();
    //Local<Number> numr = info[2]->ToNumber();
    Nan::MaybeLocal<Number> numr = Nan::To<Number>(info[2]);
-   unsigned int rValue = numr->Value();
+   unsigned int rValue = numr.ToLocalChecked()->Value();
    
    char * input = Buffer::Data(target);
    char output[32];
@@ -128,7 +128,7 @@ NAN_METHOD(scryptn) {
 
    //Local<Number> num = info[1]->ToNumber();
    Nan::MaybeLocal<Number> num = Nan::To<Number>(info[1]);
-   unsigned int nFactor = num->Value();
+   unsigned int nFactor = num.ToLocalChecked()->Value();
 
    char * input = Buffer::Data(target);
    char output[32];
@@ -159,19 +159,19 @@ NAN_METHOD(scryptjane) {
 
     //Local<Number> num = info[1]->ToNumber();
     Nan::MaybeLocal<Number> num = Nan::To<Number>(info[1]);
-    int timestamp = num->Value();
+    int timestamp = num.ToLocalChecked()->Value();
 
     //Local<Number> num2 = info[2]->ToNumber();
     Nan::MaybeLocal<Number> num2 = Nan::To<Number>(info[2]);
-    int nChainStartTime = num2->Value();
+    int nChainStartTime = num2.ToLocalChecked()->Value();
 
     //Local<Number> num3 = info[3]->ToNumber();
     Nan::MaybeLocal<Number> num3 = Nan::To<Number>(info[3]);
-    int nMin = num3->Value();
+    int nMin = num3.ToLocalChecked()->Value();
 
     //Local<Number> num4 = info[4]->ToNumber();
     Nan::MaybeLocal<Number> num4 = Nan::To<Number>(info[4]);
-    int nMax = num4->Value();
+    int nMax = num4.ToLocalChecked()->Value();
 
     char * input = Buffer::Data(target);
     char output[32];
