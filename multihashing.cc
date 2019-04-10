@@ -21,7 +21,7 @@ extern "C" {
     #include "cryptonight.h"
     #include "x13.h"
     #include "nist5.h"
-    #include "sha1.h",
+    #include "sha1.h"
     #include "x15.h"
 	#include "fresh.h"
 }
@@ -541,7 +541,7 @@ NAN_METHOD(boolberry) {
 
     if(info.Length() >= 3)
         if(info[2]->IsUint32())
-            height = info[2]->ToUint32()->Uint32Value();
+            height = Nan::To<Uint32>(info[2]).ToLocalChecked()->Value();
         else
             return THROW_ERROR_EXCEPTION("Argument 3 should be an unsigned integer.");
 
